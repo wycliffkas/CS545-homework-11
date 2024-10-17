@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes, NavLink } from "react-router-dom";
+
+import "./App.css";
+import EditPost from "./pages/ EditPost";
+import PostDetails from "./pages/PostDetails";
+import Home from "./pages/Home";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav style={{ margin: "5px" }}>
+        <NavLink to="/" style={{ padding: "5px" }}>
+          Home
+        </NavLink>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/posts/:id" element={<PostDetails />}></Route>
+        <Route path="/posts/:id/edit" element={<EditPost />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
+      </Routes>
+    </>
   );
 }
 
